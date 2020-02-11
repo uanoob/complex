@@ -1,7 +1,7 @@
 {
-  "name": "complex",
+  "name": "worker",
   "version": "1.0.0",
-  "description": "Multiple Docker containers deployment",
+  "description": "Redis client",
   "main": "index.js",
   "repository": "git@github.com:uanoob/complex.git",
   "license": "MIT",
