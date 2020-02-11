@@ -1,68 +1,63 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# web-app
 
-## Available Scripts
+React app, docker, docker-compose, nginx
 
-In the project directory, you can run:
+# lists running docker containers
 
-### `yarn start`
+docker ps
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+# lists all docker containers
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+docker ps --all
 
-### `yarn test`
+# build
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+docker build -t \<containerID> .
 
-### `yarn build`
+# build container by specify development Dockerfile
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+docker build -f Dockerfile.dev .
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+# run app with port routing
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+docker run -p 8080:8080 \<containerID>
 
-### `yarn eject`
+# run nginx server with port routing
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+docker run -p 8080:80 \<containerID>
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# run app with shell
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+docker run -it \<containerID> sh
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+# run a command in a running container with shell
 
-## Learn More
+docker exec -it \<containerID> sh
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+# run a test command in a running container
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+docker run -it \<containerID> npm run test
 
-### Code Splitting
+# run a test command in a running container with hot reload
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+docker exec -it \<containerID> npm run test
 
-### Analyzing the Bundle Size
+# run containers with docker-compose
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+docker-compose up
 
-### Making a Progressive Web App
+# build containers with docker-compose
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+docker-compose build
 
-### Advanced Configuration
+# run containers with docker-compose in background
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+docker-compose up -d
 
-### Deployment
+# stop containers with docker-compose
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+docker-compose down
 
-### `yarn build` fails to minify
+# list running containers with docker-compose
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+docker-compose ps
