@@ -1,0 +1,22 @@
+os: linux
+language: node_js
+node_js:
+  - lts/*
+services:
+  - docker
+before_install:
+  - docker build -t uanoob/react-test -f ./client/Dockerfile.dev ./client
+script:
+  - docker run -e CI=true uanoob/react-test npm run test
+after_success:
+  - docker build -t uanoob/multi-client ./client
+  - docker build -t uanoob/multi-nginx ./nginx
+  - docker build -t uanoob/multi-server ./server
+  - docker build -t uanoob/multi-worker ./worker
+  # Login to the docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  # Take those images and push them to docker hub
+  - docker push uanoob/multi-client
+  - docker push uanoob/multi-nginx
+  - docker push uanoob/multi-server
+  - docker push uanoob/multi-worker
