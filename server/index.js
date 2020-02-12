@@ -16,7 +16,7 @@ const pgClient = new Pool({
   user: keys.pgUser,
   host: keys.pgHost,
   database: keys.pgDatabase,
-  password: keys.PpgPassword,
+  password: keys.PgPassword,
   port: keys.pgPort,
 });
 
@@ -51,14 +51,14 @@ app.get('/values/current', async (req, res) => {
   });
 });
 
-app.post('/value/current', async (req, res) => {
+app.post('/values', async (req, res) => {
   const index = req.body.index;
   if (parseInt(index) > 40) {
     return res.status(422).send('Index too high');
   }
   redisClient.hset('values', index, 'Nothing yet!');
   redisPublisher.publish('insert', index);
-  pgClient.query('INSERT INTO values (number) VALUES($1)', [index]);
+  pgClient.query('INSERT INTO values(number) VALUES($1)', [index]);
   res.send({ working: true });
 });
 
