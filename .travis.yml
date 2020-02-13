@@ -20,3 +20,16 @@ after_success:
   - docker push uanoob/multi-nginx
   - docker push uanoob/multi-server
   - docker push uanoob/multi-worker
+deploy:
+  provider: elasticbeanstalk
+  access_key_id:
+    secure: '$AWS_ACCESS_KEY'
+  secret_access_key:
+    secure: '$AWS_SECRET_KEY'
+  region: 'eu-central-1'
+  app: 'multi-docker'
+  env: 'MultiDocker-env'
+  bucket_name: 'elasticbeanstalk-eu-central-1-775403175877'
+  bucket_path: 'docker-multi'
+  on:
+    branch: master
