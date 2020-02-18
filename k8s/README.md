@@ -12,6 +12,14 @@ Docker and Kubernetes
     - minikube status
 # Cluster info on local machine
     - kubectl cluster-info
+# Kubernetes persistent volume info on machine
+    - kubectl get storageclass
+# Kubernetes persistent volume more info on machine
+    - kubectl describe storageclass
+# Get list kubernetes persistent volumes on machine
+    - kubectl get pv
+# Get list kubernetes persistent volume claims on machine
+    - kubectl get pvc
 # Change the current config of cluster (Create cluster if does not exist)
     - kubectl apply -f <filename>
     - kubectl apply -f client-pod.yaml
