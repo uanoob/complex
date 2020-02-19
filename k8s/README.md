@@ -20,6 +20,11 @@ Docker and Kubernetes
     - kubectl get pv
 # Get list kubernetes persistent volume claims on machine
     - kubectl get pvc
+# Creating secret on machine
+    - kubectl create secret generic <secret_name> --from-literal <secret_key>=<secret_value>
+    - kubectl create secret generic pgpassword --from-literal PG_PASSWORD=password123 (example)
+# List secrets on machine
+    - kubectl get secrets
 # Change the current config of cluster (Create cluster if does not exist)
     - kubectl apply -f <filename>
     - kubectl apply -f client-pod.yaml
