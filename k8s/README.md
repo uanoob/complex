@@ -12,6 +12,12 @@ Docker and Kubernetes
     - minikube status
 # Cluster info on local machine
     - kubectl cluster-info
+# NGINX Ingress Controller installation on local machine
+    - kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/nginx-0.29.0/deploy/static/mandatory.yaml
+# Enable ingress addons on local machine
+    - minikube addons enable ingress
+# Disable ingress addons on local machine
+    - minikube addons disable ingress
 # Kubernetes persistent volume info on machine
     - kubectl get storageclass
 # Kubernetes persistent volume more info on machine
