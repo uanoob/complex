@@ -4,6 +4,10 @@ Multiple Docker containers deployment
     - docker ps
 ## lists all docker containers
     - docker ps --all
+## Stop one or more running containers
+    - docker stop <containerID>
+## Remove unused data
+    - docker system prune --all
 ## build
     - docker build -t <containerID> .
 ## build container by specify development Dockerfile
